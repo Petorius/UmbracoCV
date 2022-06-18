@@ -12,6 +12,49 @@
 				<h1 class="display-1">@Model.Value("pageTitle")</h1>
 			</div>
 		</div>
+		
+				<!-- For the "Header" of CV Page -->
+
+		
+				<div>
+			<div class="header" style="text-align:center;width: 300px;margin: 0 auto;">
+				<h1>@Model.Value("cvOwnersName")</h1>
+			</div>
+		<div class="container">
+
+			<div class="row section">
+				<div class="col-md-12">
+@{
+    if (Model.Value<string[]>("nonURL_HeaderInformation").Length > 0)
+    {
+        <ul>
+            @foreach (var item in Model.Value<string[]>("nonURL_HeaderInformation"))
+            {
+                <li>@item</li>
+            }
+        </ul>
+    }
+}
+@using Umbraco.Cms.Core.Models
+@{
+    var links = Model.Value<IEnumerable<Link>>("cV_URL");
+    if (links.Any())
+    {
+        <ul>
+            @foreach (var link in links)
+            {
+                <li><a href="@link.Url" target="@link.Target">@link.Name</a></li>
+            }
+        </ul>
+    }
+}
+
+				</div>				
+			</div>
+
+		</div>
+
+		
 
 		<!-- This is where we're going to render our content -->
 		
