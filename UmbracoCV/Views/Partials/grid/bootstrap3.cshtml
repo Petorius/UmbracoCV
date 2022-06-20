@@ -5,7 +5,7 @@
 
 @if (Model is JObject && Model?.sections is not null)
 {
-  var oneColumn = ((System.Collections.ICollection)Model.sections).Count == 1;
+    var oneColumn = ((System.Collections.ICollection)Model.sections).Count == 1;
 
     <div class="umb-grid">
         @if (oneColumn)
@@ -46,9 +46,10 @@
     private async Task renderRow(dynamic row, bool singleColumn)
     {
         <div @RenderElementAttributes(row)>
-            @if (singleColumn) {
+            @if (singleColumn)
+            {
                 @:<div class="container">
-            }
+                }
             <div class="row clearfix">
                 @foreach (var area in row.areas)
                 {
@@ -63,11 +64,12 @@
                             }
                         </div>
                     </div>
-                 }
+                }
             </div>
-            @if (singleColumn) {
-                @:</div>
-            }
+            @if (singleColumn)
+            {
+            @:</div>
+        }
         </div>
     }
 

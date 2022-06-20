@@ -20,113 +20,106 @@
     </div>
     <div class="container" style="padding-top: 10px;">
 
-
-                @{
-                    if (Model.Value<string[]>("nonURL_HeaderInformation").Length > 0)
+        @{
+            if (Model.Value<string[]>("nonURL_HeaderInformation").Length > 0)
+            {
+                <ul>
+                    @foreach (var item in Model.Value<string[]>("nonURL_HeaderInformation"))
                     {
-                        <ul>
-                            @foreach (var item in Model.Value<string[]>("nonURL_HeaderInformation"))
-                            {
-                                <li>@item</li>
-                            }
-                        </ul>
+                        <li>@item</li>
                     }
-                }
-                @using Umbraco.Cms.Core.Models
-                @{
-                    var links = Model.Value<IEnumerable<Link>>("cV_URL");
-                    if (links.Any())
+                </ul>
+            }
+        }
+        @using Umbraco.Cms.Core.Models
+        @{
+            var links = Model.Value<IEnumerable<Link>>("cV_URL");
+            if (links.Any())
+            {
+                <ul>
+                    @foreach (var link in links)
                     {
-                        <ul>
-                            @foreach (var link in links)
-                            {
-                                <li><a href="@link.Url" target="@link.Target">@link.Name</a></li>
-                            }
-                        </ul>
+                        <li><a href="@link.Url" target="@link.Target">@link.Name</a></li>
                     }
+                </ul>
+            }
+        }
+    </div>
+</div>
+
+<!-- For the Content group of CV Page -->
+
+<div class="container" style="padding-top: 10px;">
+    <h2>@Model.Value("bodyTitle")</h2>
+    @Model.Value("bodyText")
+</div>
+
+<!-- For the Qualifications group of CV Page -->
+
+<div class="container" style="padding-top: 10px;">
+    <h2>@Model.Value("qualificationsTitle")</h2>
+
+    @{
+        if (Model.Value<string[]>("qualificationsList").Length > 0)
+        {
+            <ul>
+                @foreach (var item in Model.Value<string[]>("qualificationsList"))
+                {
+                    <li>@item</li>
                 }
+            </ul>
+        }
+    }
+</div>
 
-    </div>
-        </div>
+<!-- For the Education group of CV Page -->
+<div class="container" style="padding-top: 10px;">
+    <h2>@Model.Value("educationTitle")</h2>
+    @Model.Value("educationContentBody")
+</div>
 
+<!-- For the Languages group of CV Page -->
 
-    <!-- For the Content group of CV Page -->
+<div class="container" style="padding-top: 10px;">
+    <h2>@Model.Value("languagesTitle")</h2>
 
-    <div class="container" style="padding-top: 10px;">
-        <h2>@Model.Value("bodyTitle")</h2>
-                @Model.Value("bodyText")
-    </div>
-
-    <!-- For the Qualifications group of CV Page -->
-
-    <div class="container" style="padding-top: 10px;">
-        <h2>@Model.Value("qualificationsTitle")</h2>
-
-                @{
-                    if (Model.Value<string[]>("qualificationsList").Length > 0)
-                    {
-                        <ul>
-                            @foreach (var item in Model.Value<string[]>("qualificationsList"))
-                            {
-                                <li>@item</li>
-                            }
-                        </ul>
-                    }
+    @{
+        if (Model.Value<string[]>("languagesList").Length > 0)
+        {
+            <ul>
+                @foreach (var item in Model.Value<string[]>("languagesList"))
+                {
+                    <li>@item</li>
                 }
+            </ul>
+        }
+    }
+</div>
 
-    </div>
+<!-- For the IT Proficiencies group of CV Page -->
 
-    <!-- For the Education group of CV Page -->
-    <div class="container" style="padding-top: 10px;">
-        <h2>@Model.Value("educationTitle")</h2>
-                @Model.Value("educationContentBody")
-    </div>
+<div class="container" style="padding-top: 10px;">
+    <h2>@Model.Value("iTProficienciesTitle")</h2>
 
-    <!-- For the Languages group of CV Page -->
-
-    <div class="container" style="padding-top: 10px;">
-        <h2>@Model.Value("languagesTitle")</h2>
-
-
-                @{
-                    if (Model.Value<string[]>("languagesList").Length > 0)
-                    {
-                        <ul>
-                            @foreach (var item in Model.Value<string[]>("languagesList"))
-                            {
-                                <li>@item</li>
-                            }
-                        </ul>
-                    }
+    @{
+        if (Model.Value<string[]>("iTProficienciesList").Length > 0)
+        {
+            <ul>
+                @foreach (var item in Model.Value<string[]>("iTProficienciesList"))
+                {
+                    <li>@item</li>
                 }
-                    </div>
+            </ul>
+        }
+    }
+</div>
 
+<!-- For the Personal group of CV Page -->
+<div class="container" style="padding-top: 10px; padding-bottom: 100px;">
+    <h2>@Model.Value("personalTitle")</h2>
 
-                <!-- For the IT Proficiencies group of CV Page -->
+    <div style="padding-top: 10px;">
 
-                <div class="container" style="padding-top: 10px;">
-                    <h2>@Model.Value("iTProficienciesTitle")</h2>
-
-                            @{
-                                if (Model.Value<string[]>("iTProficienciesList").Length > 0)
-                                {
-                                    <ul>
-                                        @foreach (var item in Model.Value<string[]>("iTProficienciesList"))
-                                        {
-                                            <li>@item</li>
-                                        }
-                                    </ul>
-                                }
-                            }
-                                </div>
-
-
-                            <!-- For the Personal group of CV Page -->
-                            <div class="container" style="padding-top: 10px; padding-bottom: 100px;">
-                                <h2>@Model.Value("personalTitle")</h2>
-
-                                    <div style="padding-top: 10px;">
-
-                                        @Model.Value("personalContent")
-                                    </div>
-                            </div>
+        @Model.Value("personalContent")
+    </div>
+</div>

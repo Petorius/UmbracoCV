@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
@@ -16,6 +15,5 @@ namespace UmbracoCV
             => Host.CreateDefaultBuilder(args)
                 .ConfigureLogging(x => x.ClearProviders())
                 .ConfigureWebHostDefaults(webBuilder => webBuilder.UseStartup<Startup>());
-
     }
 }

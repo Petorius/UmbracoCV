@@ -2,7 +2,6 @@
 @using Microsoft.AspNetCore.Html
 @using Newtonsoft.Json.Linq
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<dynamic>
-
 @*
     Razor helpers located at the bottom of this file
 *@
@@ -62,7 +61,7 @@
                             }
                         </div>
                     </div>
-                 }
+                }
             </div>
         </div>
     }
@@ -86,7 +85,8 @@
 
         JObject style = contentItem.styles;
 
-        if (style != null) {
+        if (style != null)
+        {
             var cssVals = new List<string>();
             foreach (JProperty property in style.Properties())
             {

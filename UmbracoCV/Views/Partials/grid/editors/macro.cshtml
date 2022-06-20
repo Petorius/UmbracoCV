@@ -3,7 +3,7 @@
 @if (Model?.value is not null)
 {
     string macroAlias = Model.value.macroAlias.ToString();
-    var parameters = new Dictionary<string,object>();
+    var parameters = new Dictionary<string, object>();
     foreach (var mpd in Model.value.macroParamsDictionary)
     {
         parameters.Add(mpd.Name, mpd.Value);
